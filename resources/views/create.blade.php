@@ -12,15 +12,18 @@
                         <hr>
                     </div>
                     <div class="form-group col-sm-4">
-                        <label for="cedula">Cedula</label>
-                        <input type="number" class="form-control" id="cedula" name="cedula" required placeholder="Cedula" minlength="5">
+                        <label for="cedula">Cédula</label>
+                        <input type="number" class="form-control" id="cedula" name="cedula" required placeholder="Cédula" minlength="5">
                         <div class="invalid-feedback">
-                            La cedula no puede ser vacia y debe tenr minimo 5 digitos.
+                            La cédula no puede ser vacía y debe tener mínimo 5 dígitos.
                           </div>
                       </div>
                       <div class="form-group col-sm-4">
                         <label for="nombre1">Primer Nombre</label>
                         <input type="text" class="form-control" id="nombre1" name="nombre1" required placeholder="Nombre" minlength="3">
+                        <div class="invalid-feedback">
+                            La nombre no puede ser vacío y debe tener mínimo 3 caráteres.
+                          </div>
                       </div>
                       <div class="form-group col-sm-4">
                         <label for="nombre2">Segundo Nombre</label>
@@ -29,27 +32,39 @@
                       <div class="form-group col-sm-4">
                         <label for="apellido1">Primer Apellido</label>
                         <input type="text" class="form-control" id="apellido1" name="apellido1" placeholder="Apellido" required minlength="3">
+                        <div class="invalid-feedback">
+                            La apellido no puede ser vacío y debe tener mínimo 3 caráteres.
+                          </div>
                       </div>
                       <div class="form-group col-sm-4">
                         <label for="apellido2">Segundo Apellido</label>
                         <input type="text" class="form-control" id="apellido2" name="apellido2" placeholder="Apellido">
                       </div>
                       <div class="form-group col-sm-4">
-                        <label for="telefono">Segundo Apellido</label>
-                        <input type="number" class="form-control" id="telefono" name="telefono" placeholder="Telefono" required minlength="7" minlength="10">
-                      </div>
+                        <label for="telefono">Teléfono</label>
+                        <input type="number" class="form-control" id="telefono" name="telefono" placeholder="Teléfono" required minlength="7" minlength="10">
+                        <div class="invalid-feedback">
+                            El teléfono no puede ser vacío y debe tener mínimo 7 dígitos.
+                          </div>
+                    </div>
                       <div class="form-group col-sm-4">
                         <label for="direccion">Dirección</label>
-                        <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Telefono" required minlength="3">
-                      </div>
+                        <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Dirección" required minlength="3">
+                        <div class="invalid-feedback">
+                            La dirección no puede ser vacía y debe tener mínimo 5 carácteres.
+                          </div>  
+                    </div>
                       <div class="form-group col-sm-4">
                         <label for="correo">Correo</label>
                         <input type="email" class="form-control" id="correo" name="correo" placeholder="Correo" required>
+                        <div class="invalid-feedback">
+                            El correo no puede ser vacío y debe tener mínimo 5 carácteres.
+                          </div>
                       </div>
                       <div class="form-group col-sm-4">
                         <label for="genero_mujer">Genero</label>
                         <div class="form-check ml-4">
-                            <input class="form-check-input" type="radio" name="genero" id="genero_mujer" value="mujer">
+                            <input class="form-check-input" type="radio" name="genero" id="genero_mujer" value="mujer" required>
                             <label class="form-check-label" for="genero_mujer">
                               Mujer
                             </label>
@@ -59,12 +74,15 @@
                             <label class="form-check-label" for="genero_hombre">
                               Hombre
                             </label>
+                            <div class="invalid-feedback" >
+                                    El género no puede ser vacío, seleccione.
+                            </div>
                         </div>
                       </div>
                       <div class="form-group col-sm-4">
                         <label for="nacionalidad_co">Nacionalidad</label>
                         <div class="form-check ml-4">
-                            <input class="form-check-input" type="radio" name="nacionalidad" id="nacionalidad_co" value="colombiano">
+                            <input class="form-check-input" type="radio" name="nacionalidad" id="nacionalidad_co" value="colombiano" required>
                             <label class="form-check-label" for="nacionalidad_co">
                               Colombiano
                             </label>
@@ -74,26 +92,35 @@
                             <label class="form-check-label" for="nacionalidad_ex">
                               Extranjero
                             </label>
+                            <div class="invalid-feedback" >
+                                    La nacionalidad no puede ser vacía, seleccione.
+                            </div>
                         </div>
                       </div>
                       <div class="form-group col-sm-4">
                         <label for="estado_civil">Estado Civil</label>
-                        <select class="custom-select" id="estado_civil" name="estado_civil">
-                            <option selected>Seleccione</option>
+                        <select class="custom-select" id="estado_civil" name="estado_civil" required>
+                            <option value="" disabled selected hidden>Seleccione</option>>
                             <option value="soltero">Soltero</option>
                             <option value="casado">Casado</option>
                             <option value="separado">Separado</option>
                             <option value="viudo">Viudo</option>
                           </select>
+                          <div class="invalid-feedback">
+                            Esta no puede ser vacía, seleccione su estado civil.
+                        </div>
                       </div>
                       <div class="form-group col-sm-4">
                         <label for="fecha_nacimiento">Fecha de nacimiento</label>
                         <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" required>
+                        <div class="invalid-feedback">
+                            La fecha de nacimiento no puede ser vacía, seleccione.
+                        </div>
                       </div>
                       <div class="form-group col-sm-4">
                         <label for="rh">RH</label>
-                        <select class="custom-select" id="rh" name="rh">
-                            <option selected>Seleccione</option>
+                        <select class="custom-select" id="rh" name="rh" required >
+                        <option value="" disabled selected hidden>Seleccione</option>>
                             <option value="A+">A+</option>
                             <option value="A-">A-</option>
                             <option value="B+">B+</option>
@@ -103,6 +130,9 @@
                             <option value="AB+">AB+</option>
                             <option value="AB-">AB-</option>
                           </select>
+                        <div class="invalid-feedback">
+                            Esta no puede ser vacía, seleccione su tipo de sangre.
+                        </div>
                       </div>
                 </div>
                 <div class="row mt-4">
@@ -113,12 +143,18 @@
                     <div class="col-sm-12">
                         <div class="row">
                             <div class="form-group col-sm-4">
-                                <label for="titulo">Titulo</label>
-                                <input type="number" class="form-control" id="titulo" name="titulo[]" required placeholder="Titulo">
+                                <label for="titulo">Título</label>
+                                <input type="number" class="form-control" id="titulo" name="titulo[]" required placeholder="Título">
+                                <div class="invalid-feedback">
+                                    El Título no puede ser vacío y debe tener mínimo 5 carácteres.
+                                </div>
                             </div>
                             <div class="form-group col-sm-4">
                                 <label for="entidad_educativa">Entidad educativa</label>
                                 <input type="number" class="form-control" id="entidad_educativa" name="entidad_educativa[]" required placeholder="Entidad" >
+                                <div class="invalid-feedback">
+                            La entidad educativa no puede ser vacía y debe tener mínimo 5 carácteres.
+                          </div>
                             </div>
                             <div class="form-group col-sm-4">
                                 <label for="fecha_terminacion">Fecha terminacion</label>
@@ -129,12 +165,18 @@
                             <div class="col-sm-11">
                                 <div class="row">
                                     <div class="form-group col-sm-4">
-                                        <label for="titulo1">Titulo</label>
+                                        <label for="titulo1">Título</label>
                                         <input type="number" class="form-control" id="titulo1" name="titulo[]" required placeholder="Titulo">
+                                        <div class="invalid-feedback">
+                                            El Título no puede ser vacío y debe tener mínimo 5 carácteres.
+                                        </div>
                                     </div>
                                     <div class="form-group col-sm-4">
                                         <label for="entidad_educativa1">Entidad educativa</label>
                                         <input type="number" class="form-control" id="entidad_educativa1" name="entidad_educativa[]" required placeholder="Entidad" >
+                                        <div class="invalid-feedback">
+                                            La entidad educativa no puede ser vacía y debe tener mínimo 5 carácteres.
+                                        </div>
                                     </div>
                                     <div class="form-group col-sm-4">
                                         <label for="fecha_terminacion1">Fecha terminacion</label>
@@ -160,10 +202,16 @@
                             <div class="form-group col-sm-3">
                                 <label for="empresa">Empresa</label>
                                 <input type="number" class="form-control" id="empresa" name="empresa[]" required placeholder="Empresa">
+                                <div class="invalid-feedback">
+                                    La empresa no puede ser vacía y debe tener mínimo 5 carácteres.
+                                </div>
                             </div>
                             <div class="form-group col-sm-3">
                                 <label for="cargo">Cargo</label>
                                 <input type="number" class="form-control" id="cargo" name="cargo[]" required placeholder="Cargo" >
+                                <div class="invalid-feedback">
+                                    El cargo no puede ser vacío y debe tener mínimo 3 carácteres.
+                                </div>
                             </div>
                             <div class="form-group col-sm-3">
                                 <label for="fecha_inicio">Fecha Inicio</label>
@@ -180,10 +228,16 @@
                                     <div class="form-group col-sm-3">
                                         <label for="empresa1">Empresa</label>
                                         <input type="number" class="form-control" id="empresa1" name="empresa[]" required placeholder="Empresa">
+                                        <div class="invalid-feedback">
+                                            La empresa no puede ser vacía y debe tener mínimo 5 carácteres.
+                                        </div>
                                     </div>
                                     <div class="form-group col-sm-3">
                                         <label for="cargo1">Cargo</label>
                                         <input type="number" class="form-control" id="cargo1" name="cargo[]" required placeholder="Cargo" >
+                                        <div class="invalid-feedback">
+                                            El cargo no puede ser vacío y debe tener mínimo 3 carácteres.
+                                         </div>
                                     </div>
                                     <div class="form-group col-sm-3">
                                         <label for="fecha_inicio1">Fecha Inicio</label>
