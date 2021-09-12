@@ -32,22 +32,28 @@
                                 <td>{{$hdv->correo}}</td>
                                 <td>{{$hdv->telefono}}</td>
                                 <td class="text-center">
-                                    <a href="{{route('show', $hdv->id)}}"><button type="button" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></button></a>
-                                    <a href="{{route('edit', $hdv->id)}}"><button type="button" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></button></a>
-                                    <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                    <div class="d-flex">
+                                        <a href="{{route('show', $hdv->id)}}"><button type="button" class="btn btn-sm btn-info mr-3"><i class="fas fa-eye"></i></button></a>
+                                        <a href="{{route('edit', $hdv->id)}}"><button type="button" class="btn btn-sm btn-warning mr-3"><i class="fas fa-edit"></i></button></a>
+                                        <form action="{{route('destroy', $hdv->id)}}" method="POST" onclick="return confirm('¿Desea eliminar la hoja de vida?')">
+                                            @csrf
+                                            @method("delete")
+                                            <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach
-                        @if (count($datos) == 0)
-                            <div class="row">
-                                <div class="col-sm-12 text-center">
-                                    <h3>No Hay Datos</h3>
-                                </div>
-                            </div>
-                        @endif
                     </tbody>
                   </table>
             </div>
         </div>
+        @if (count($datos) == 0)
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <h3>No Hay Datos</h3>
+                </div>
+            </div>
+        @endif
     </div>
 @endsection

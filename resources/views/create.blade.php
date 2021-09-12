@@ -6,7 +6,7 @@
                 <h2 class="text-success">Crear Hoja de vida</h2>
                 @include('flash::message')
             </div>
-            <form class="col-sm-12 needs-validation" novalidate method="POST" action="{{route('store')}}" onsubmit="onsubmited()">
+            <form class="col-sm-12 needs-validation" novalidate method="POST" action="{{route('store')}}" onsubmit="return onsubmited()">
                 @csrf
                 <div class="row">
                     <div class="col-sm-12">
@@ -15,7 +15,7 @@
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="cedula">Cédula</label>
-                        <input type="number" class="form-control" id="cedula" name="cedula" required placeholder="Cédula" minlength="5">
+                        <input type="number" class="form-control" onkeyup="VerifyCedule(this.value)" id="cedula" name="cedula" required placeholder="Cédula" minlength="5">
                         <div class="invalid-feedback">
                             La cédula no puede ser vacía y debe tener mínimo 5 dígitos.
                           </div>
@@ -348,13 +348,25 @@
             document.getElementById(id).setAttribute("min", campo.value);
         }
 
-        function onsubmited(){
-            var ced = document.getElementById("cedula").value;
+        var form_validate_ced = false;
+        function onsubmited(e){
+            if(form_validate_ced == false){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'La cedula ya existe',
+                    text: 'La cedula digitada ya esta asignada en una hoja de vida!'
+                });
+            }
+            return form_validate_ced;
+        }
+
+        function VerifyCedule(valor){
             axios.post('{{route("verifyCedula")}}', {
-                cedula: ced,
+                cedula: valor,
             })
             .then(function (response) {
-                return response.data.res;
+                form_validate_ced = response.data.res;
+                console.log(form_validate_ced);
             })
             .catch(function (error) {
                 console.log(error);
