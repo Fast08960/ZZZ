@@ -17,10 +17,10 @@ class CreateTableBasicDates extends Migration
             $table->id();
             $table->integer('cedula')->unique();
             $table->string('nombre1');
-            $table->string('nombre2');
+            $table->string('nombre2')->nullable();
             $table->string('apellido1');
-            $table->string('apellido2');
-            $table->integer("telefono");
+            $table->string('apellido2')->nullable();
+            $table->bigInteger("telefono");
             $table->text("direccion");
             $table->string("correo");
             $table->enum("genero", ["mujer", "hombre"]);
