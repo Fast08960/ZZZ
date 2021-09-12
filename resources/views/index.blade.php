@@ -38,6 +38,13 @@
                                 </td>
                             </tr>
                         @endforeach
+                        @if (count($datos) == 0)
+                            <div class="row">
+                                <div class="col-sm-12 text-center">
+                                    <h3>No Hay Datos</h3>
+                                </div>
+                            </div>
+                        @endif
                     </tbody>
                   </table>
             </div>
