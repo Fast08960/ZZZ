@@ -8,6 +8,9 @@
             <div class="col-sm-12 text-right">
                 <a href="{{route('create')}}"><button type="button" class="btn btn-sm btn-info px-3 text-white">Crear HDV</button></a>
             </div>
+            <div class="col-sm-12">
+                @include('flash::message')
+            </div>
             <div class="col-sm-12 mt-4">
                 <table class="table">
                     <thead class="thead-dark">

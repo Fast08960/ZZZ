@@ -16,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::resources(['/' => HomeController::class]);
 Route::post('/verifyCedula', [HomeController::class, 'verifyCedula'])->name("verifyCedula");
+Route::get('/{id}', [HomeController::class, 'show'])->name("show");

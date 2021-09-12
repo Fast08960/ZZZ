@@ -74,7 +74,10 @@ class HomeController extends Controller
     }
 
     public function show($id){
-        return $id;
+        $hdv = BasicDates::find($id);
+        $hdv->study = Studys::where('id_basicos', $id)->get();
+        $hdv->jobs = WorksJobs::where('id_basicos', $id)->get();
+        return view('show', compact('hdv'));
     }
 
     public function update($id, Request $request){
