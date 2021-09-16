@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//index create store edit update destroy
 Route::resources(['/' => HomeController::class]);
 Route::post('/verifyCedula', [HomeController::class, 'verifyCedula'])->name("verifyCedula");
 Route::get('/{id}', [HomeController::class, 'show'])->name("show");

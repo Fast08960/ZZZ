@@ -15,7 +15,7 @@ class CreateTableBasicDates extends Migration
     {
         Schema::create('basic_dates', function (Blueprint $table) {
             $table->id();
-            $table->integer('cedula')->unique();
+            $table->bigInteger('cedula')->unique();
             $table->string('nombre1');
             $table->string('nombre2')->nullable();
             $table->string('apellido1');

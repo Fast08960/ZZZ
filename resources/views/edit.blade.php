@@ -16,7 +16,7 @@
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="cedula">Cédula</label>
-                        <input type="number" class="form-control" id="cedula" value="{{$hdv->cedula}}" name="cedula" required placeholder="Cédula" minlength="5">
+                        <input type="number" class="form-control" id="cedula" value="{{$hdv->cedula}}" name="cedula" required placeholder="Cédula" minlength="5" readonly>
                         <div class="invalid-feedback">
                             La cédula no puede ser vacía y debe tener mínimo 5 dígitos.
                           </div>

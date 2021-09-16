@@ -15,9 +15,9 @@
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="cedula">Cédula</label>
-                        <input type="number" class="form-control" onkeyup="VerifyCedule(this.value)" id="cedula" name="cedula" required placeholder="Cédula" minlength="5">
+                        <input type="number" class="form-control" onkeyup="VerifyCedule(this.value)" id="cedula" name="cedula" required placeholder="Cédula" minlength="5" maxlenght="12">
                         <div class="invalid-feedback">
-                            La cédula no puede ser vacía y debe tener mínimo 5 dígitos.
+                            La cédula no puede ser vacía,  debe tener mínimo 5 dígitos y maximo 12.
                           </div>
                       </div>
                       <div class="form-group col-sm-4">
@@ -366,7 +366,6 @@
             })
             .then(function (response) {
                 form_validate_ced = response.data.res;
-                console.log(form_validate_ced);
             })
             .catch(function (error) {
                 console.log(error);
