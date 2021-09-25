@@ -31,22 +31,24 @@
                             <td>{{$hdv->apellido2 ?? 'N/A'}}</td>
                         </tr>
                         <tr>
+                            <th scope="row">Identificación</th>
+                            <td>{{$hdv->cedula ?? 'N/A'}}</td>
                             <th scope="row">Telefono</th>
                             <td>{{$hdv->telefono}}</td>
                             <th scope="row">Direccion</th>
                             <td>{{$hdv->direccion ?? 'N/A'}}</td>
-                            <th scope="row">Correo</th>
-                            <td>{{$hdv->correo ?? 'N/A'}}</td>
                         </tr>
                         <tr>
+                            <th scope="row">Correo</th>
+                            <td>{{$hdv->correo ?? 'N/A'}}</td>
                             <th scope="row">Genero</th>
                             <td>{{ucfirst($hdv->genero)}}</td>
                             <th scope="row">Nacionalidad</th>
                             <td>{{ucfirst($hdv->nacionalidad)}}</td>
-                            <th scope="row">Estado Civil</th>
-                            <td>{{ucfirst($hdv->estado_civil)}}</td>
                         </tr>
                         <tr>
+                            <th scope="row">Estado Civil</th>
+                            <td>{{ucfirst($hdv->estado_civil)}}</td>
                             <th scope="row">RH</th>
                             <td>{{ucfirst($hdv->rh)}}</td>
                             <th scope="row">Fecha de Nacimiento</th>

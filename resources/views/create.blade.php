@@ -142,7 +142,7 @@
                         <h4 class="text-success">Estudios <button type="button" onclick="addStudys()" class="btn btn-sm btn-info ml-4 text-white"><i class="fas fa-plus"></i></button></h4>
                         <hr>
                     </div>
-                    <div class="col-sm-12" id="studys_totals">
+                    <div class="col-sm-12">
                         <div class="row">
                             <div class="form-group col-sm-4">
                                 <label for="titulo">Título</label>
@@ -163,6 +163,8 @@
                                 <input type="date" class="form-control fecha_termination_study" max="{{$date}}" id="fecha_terminacion" name="fecha_terminacion[]">
                             </div>
                         </div>
+                    </div>
+                    <div class="col-sm-12" id="studys_totals">
                     </div>
                 </div>
 
@@ -264,7 +266,7 @@
             `;
 
             var content = document.getElementById('studys_totals').innerHTML;
-            document.getElementById('studys_totals').innerHTML = content + contenido;
+            document.getElementById('studys_totals').insertAdjacentHTML('beforeend', contenido);
             studys++;
         }
 
@@ -314,7 +316,7 @@
                         </div>
             `;
 
-            document.getElementById("totals_jobs").innerHTML = document.getElementById("totals_jobs").innerHTML + contenido;
+            document.getElementById("totals_jobs").innerHTML = insertAdjacentHTML('beforeend', contenido);
             jobs++;
         }
 

@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\HdvExport;
 use App\Models\BasicDates;
 use App\Models\Studys;
 use App\Models\WorksJobs;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -149,5 +152,25 @@ class HomeController extends Controller
             }
             return response()->json(['res' => false]);
         }
+    }
+
+    public function export($id){
+        $hdv = BasicDates::find($id);
+        if($hdv == null){
+            flash("Hoja de vida No encontrada")->error()->important();
+            return redirect()->back();
+        }
+        $hdv->study = Studys::where('id_basicos', $id)->get();
+        $hdv->jobs = WorksJobs::where('id_basicos', $id)->get();
+
+        $pdf = PDF::loadView('export', ['hdv' => $hdv]);
+
+        return $pdf->download('archivo.pdf');
+    }
+
+    public function excel(){
+        $hdv = BasicDates::select('cedula', DB::raw('CONCAT(`nombre1`," ",IFNULL(nombre2,"")) as name'), DB::raw('CONCAT(`apellido1`," ",`apellido2`) as apes'), 'telefono', 'direccion', 'correo', 'genero', 'nacionalidad', 'estado_civil', 'fecha_nacimiento', 'rh')->get();
+        
+        return \Excel::download(new HdvExport($hdv), 'Hjasdevida.xlsx');
     }
 }

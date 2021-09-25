@@ -338,7 +338,7 @@
             `;
 
             var content = document.getElementById('studys_totals').innerHTML;
-            document.getElementById('studys_totals').innerHTML = content + contenido;
+            document.getElementById('studys_totals').insertAdjacentHTML('beforeend', contenido);
             studys++;
         }
 
@@ -394,7 +394,7 @@
                         </div>
             `;
 
-            document.getElementById("totals_jobs").innerHTML = document.getElementById("totals_jobs").innerHTML + contenido;
+            document.getElementById("totals_jobs").insertAdjacentHTML('beforeend', contenido);
             jobs++;
         }
 

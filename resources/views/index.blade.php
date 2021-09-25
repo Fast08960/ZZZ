@@ -6,6 +6,9 @@
                 <h3 class="text-success">Hojas De Vida Registradas</h3>
             </div>
             <div class="col-sm-12 text-right">
+                @if (count($datos) != 0)
+                    <a href="{{route('excel')}}"><button type="button" class="btn btn-sm btn-success px-3 text-white">Generar excel</button></a>
+                @endif
                 <a href="{{route('create')}}"><button type="button" class="btn btn-sm btn-info px-3 text-white">Crear HDV</button></a>
             </div>
             <div class="col-sm-12">
@@ -40,6 +43,7 @@
                                             @method("delete")
                                             <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
                                         </form>
+                                        <a href="{{route('export', $hdv->id)}}"><button type="button" class="btn btn-sm btn-dark ml-3"><i class="fas fa-download"></i></button></a>
                                     </div>
                                 </td>
                             </tr>

@@ -20,3 +20,5 @@ Route::get('/{id}', [HomeController::class, 'show'])->name("show");
 Route::get('/{id}/edit', [HomeController::class, 'edit'])->name("edit");
 Route::patch('/{id}', [HomeController::class, 'update'])->name("update");
 Route::delete('/{id}', [HomeController::class, 'destroy'])->name("destroy");
+Route::get('/export/data/{id}', [HomeController::class, 'export'])->name("export");
+Route::get('/export/excel', [HomeController::class, 'excel'])->name("excel");
