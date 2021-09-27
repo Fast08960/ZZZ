@@ -316,7 +316,7 @@
                         </div>
             `;
 
-            document.getElementById("totals_jobs").innerHTML = insertAdjacentHTML('beforeend', contenido);
+            document.getElementById("totals_jobs").insertAdjacentHTML('beforeend', contenido);
             jobs++;
         }
 
