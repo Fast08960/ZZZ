@@ -254,7 +254,7 @@
                                     </div>
                                     <div class="form-group col-sm-4">
                                         <label for="fecha_terminacion${studys}">Fecha terminacion</label>
-                                        <input type="date" class="form-control fecha_termination_study" min="${fecha}" id="fecha_terminacion${studys}" name="fecha_terminacion[]">
+                                        <input type="date" class="form-control fecha_termination_study" max="{{$date}}" min="${fecha}" id="fecha_terminacion${studys}" name="fecha_terminacion[]">
                                     </div>
                                 </div>
                             </div>
@@ -278,6 +278,9 @@
 
         function addJobs(){
             var fecha = document.getElementById("fecha_nacimiento").value;
+            var ano = new Date(fecha)
+            ano.setFullYear(ano.getFullYear() + 18);
+            ano = ano.toISOString().slice(0,10).replace(/-/g,"-");
             var contenido = `
             <div class="row" id="jobscounter${jobs}">
                             <div class="col-sm-11">
@@ -298,7 +301,7 @@
                                     </div>
                                     <div class="form-group col-sm-3">
                                         <label for="fecha_inicio${jobs}">Fecha Inicio</label>
-                                        <input type="date" class="form-control fecha_inicio" onchange="changeFechaInicio(this, 'fecha_terminacion_jobs${jobs}')" max="{{$date}}" id="fecha_inicio${jobs}" name="fecha_inicio[]" required>
+                                        <input type="date" class="form-control fecha_inicio" onchange="changeFechaInicio(this, 'fecha_terminacion_jobs${jobs}')" max="{{$date}}" min="${ano}" id="fecha_inicio${jobs}" name="fecha_inicio[]" required>
                                         <div class="invalid-feedback">
                                             Desbes seleccionar una fecha de inicio.
                                          </div>
