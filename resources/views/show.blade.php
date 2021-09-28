@@ -12,6 +12,11 @@
             <div class="col-sm-12">
                 @include('flash::message')
             </div>
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <img src="{{asset('storage/logos/' .  $hdv->image)}}" alt="Imagen de usuario" class="w-100">
+            </div>
+            <div class="col-sm-4"></div>
             <div class="col-sm-12 mt-4">
                 <h4 class="text-success">Datos básicos</h4>
             </div>

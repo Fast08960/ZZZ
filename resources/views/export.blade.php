@@ -51,7 +51,7 @@
 <body>
 	<div class="text-center">
 		<h1 class="text-primary">Hoja de vida de {{$hdv->nombre1}} {{$hdv->nombre2}} {{$hdv->apellido1}} {{$hdv->apellido2}}</h1>
-		<img src="https://previews.123rf.com/images/domenicogelermo/domenicogelermo1711/domenicogelermo171100171/90022644-foto-del-muchacho-feliz-joven-adolescente-adorable-que-mira-la-c%C3%A1mara-.jpg" alt="imagen hoja de vida" width="200">
+		<img src="{{asset('storage/logos/' . $hdv->image)}}" alt="Imagen de usuario" width="200px">
 	</div>
 	<div class="text-center bg-gray">
 		<h3>Datos personales</h3>

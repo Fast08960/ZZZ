@@ -28,6 +28,7 @@ class CreateTableBasicDates extends Migration
             $table->enum("estado_civil", ["soltero", "casado", "separado", "viudo"]);
             $table->date("fecha_nacimiento");
             $table->string("rh");
+            $table->string("image");
             $table->timestamps();
         });
     }

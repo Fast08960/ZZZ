@@ -6,7 +6,7 @@
                 <h2 class="text-success">Crear Hoja de vida</h2>
                 @include('flash::message')
             </div>
-            <form class="col-sm-12 needs-validation" novalidate method="POST" action="{{route('update', $hdv->id)}}" onsubmit="onsubmited()">
+            <form class="col-sm-12 needs-validation" enctype="multipart/form-data" novalidate method="POST" action="{{route('update', $hdv->id)}}" onsubmit="onsubmited()">
                 @method('patch')
                 @csrf
                 <div class="row">
@@ -120,23 +120,33 @@
                             La fecha de nacimiento no puede ser vacía, seleccione.
                         </div>
                       </div>
-                      <div class="form-group col-sm-4">
-                        <label for="rh">RH</label>
-                        <select class="custom-select" id="rh" name="rh" required >
-                        <option value="" disabled selected hidden>Seleccione</option>>
-                            <option value="A+" {{$hdv->rh == 'A+' ? 'selected' : ''}}>A+</option>
-                            <option value="A-" {{$hdv->rh == 'A-' ? 'selected' : ''}}>A-</option>
-                            <option value="B+" {{$hdv->rh == 'B+' ? 'selected' : ''}}>B+</option>
-                            <option value="B-" {{$hdv->rh == 'B-' ? 'selected' : ''}}>B-</option>
-                            <option value="O+" {{$hdv->rh == 'O+' ? 'selected' : ''}}>O+</option>
-                            <option value="O-" {{$hdv->rh == 'O-' ? 'selected' : ''}}>O-</option>
-                            <option value="AB+" {{$hdv->rh == 'AB+' ? 'selected' : ''}}>AB+</option>
-                            <option value="AB-" {{$hdv->rh == 'AB-' ? 'selected' : ''}}>AB-</option>
-                          </select>
-                        <div class="invalid-feedback">
-                            Esta no puede ser vacía, seleccione su tipo de sangre.
+                        <div class="form-group col-sm-4">
+                            <label for="rh">RH</label>
+                            <select class="custom-select" id="rh" name="rh" required >
+                            <option value="" disabled selected hidden>Seleccione</option>>
+                                <option value="A+" {{$hdv->rh == 'A+' ? 'selected' : ''}}>A+</option>
+                                <option value="A-" {{$hdv->rh == 'A-' ? 'selected' : ''}}>A-</option>
+                                <option value="B+" {{$hdv->rh == 'B+' ? 'selected' : ''}}>B+</option>
+                                <option value="B-" {{$hdv->rh == 'B-' ? 'selected' : ''}}>B-</option>
+                                <option value="O+" {{$hdv->rh == 'O+' ? 'selected' : ''}}>O+</option>
+                                <option value="O-" {{$hdv->rh == 'O-' ? 'selected' : ''}}>O-</option>
+                                <option value="AB+" {{$hdv->rh == 'AB+' ? 'selected' : ''}}>AB+</option>
+                                <option value="AB-" {{$hdv->rh == 'AB-' ? 'selected' : ''}}>AB-</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Esta no puede ser vacía, seleccione su tipo de sangre.
+                            </div>
                         </div>
-                      </div>
+                        <div class="form-group col-sm-4">
+                            <label for="rh">Imagen</label>
+                            <div class="input-group mb-3">
+                                <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="image" name="imagen" accept="image/*" aria-describedby="image">
+                                <label class="custom-file-label" for="image">Choose file</label>
+                                </div>
+                            </div>
+                            <img src="{{asset('storage/logos/' . $hdv->image)}}" alt="Imagen de usuario" class="w-100">
+                        </div>
                 </div>
                 <div class="row mt-4">
                     <div class="col-sm-12">

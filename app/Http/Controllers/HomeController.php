@@ -9,6 +9,8 @@ use App\Models\WorksJobs;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
@@ -25,6 +27,16 @@ class HomeController extends Controller
     }
 
     public function store(Request $request){
+        $nombre = "";
+        if($request->hasFile("imagen")){
+
+            $file = $request->file('imagen');
+            //obtenemos el nombre del archivo
+            $nombre =  time()."_".$file->getClientOriginalName();
+            //indicamos que queremos guardar un nuevo archivo en el disco local
+            Storage::disk('local')->put('public/logos/'.$nombre,  File::get($file));
+        }
+
         $basic = BasicDates::create([
             'cedula' => $request['cedula'],
             'nombre1' => $request['nombre1'],
@@ -39,6 +51,7 @@ class HomeController extends Controller
             'estado_civil' => $request['estado_civil'],
             'fecha_nacimiento' => $request['fecha_nacimiento'],
             'rh' => $request['rh'],
+            'image' => $nombre
         ]);
 
         if(isset($request['titulo']) && count($request['titulo']) != 0){
@@ -107,6 +120,23 @@ class HomeController extends Controller
             'rh' => $request['rh'],
         ]);
 
+        $basic = BasicDates::find($id);
+        $nombre = $basic->image;
+        if($request->hasFile("imagen")){
+
+            $file = $request->file('imagen');
+            //obtenemos el nombre del archivo
+            $nombre1 =  time()."_".$file->getClientOriginalName();
+            //indicamos que queremos guardar un nuevo archivo en el disco local
+            Storage::disk('local')->put('public/logos/'.$nombre1,  File::get($file));
+            
+            Storage::disk('local')->delete('public/logos/'.$nombre);
+            $nombre = $nombre1;
+        }
+        $basic->update([
+            'image' => $nombre
+        ]);
+
         Studys::where('id_basicos', $id)->delete();
         if(isset($request['titulo']) && count($request['titulo']) != 0){
             foreach ($request['titulo'] as $key => $tit) {
@@ -139,7 +169,11 @@ class HomeController extends Controller
     public function destroy($id){
         Studys::where('id_basicos', $id)->delete();
         WorksJobs::where('id_basicos', $id)->delete();
-        BasicDates::find($id)->delete();
+        $basic = BasicDates::find($id);
+        $nombre = $basic->image;
+        Storage::disk('local')->delete('public/logos/'.$nombre);
+        $basic->delete();
+        
         flash("Hoja de vida eliminada correctamente")->success()->important();
         return redirect()->route('index');
     }

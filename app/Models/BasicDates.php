@@ -25,5 +25,6 @@ class BasicDates extends Model
         'estado_civil',
         'fecha_nacimiento',
         'rh',
+        'image'
     ];
 }

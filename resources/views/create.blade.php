@@ -6,7 +6,7 @@
                 <h2 class="text-success">Crear Hoja de vida</h2>
                 @include('flash::message')
             </div>
-            <form class="col-sm-12 needs-validation" novalidate method="POST" action="{{route('store')}}" onsubmit="return onsubmited()">
+            <form class="col-sm-12 needs-validation" enctype="multipart/form-data" novalidate method="POST" action="{{route('store')}}" onsubmit="return onsubmited()">
                 @csrf
                 <div class="row">
                     <div class="col-sm-12">
@@ -136,6 +136,18 @@
                             Esta no puede ser vacía, seleccione su tipo de sangre.
                         </div>
                       </div>
+                        <div class="form-group col-sm-4">
+                            <label for="rh">Imagen</label>
+                            <div class="input-group mb-3">
+                                <div class="custom-file">
+                                  <input type="file" class="custom-file-input" id="image" name="imagen" accept="image/*" aria-describedby="image" required>
+                                  <label class="custom-file-label" for="image">Choose file</label>
+                                </div>
+                            </div>
+                            <div class="invalid-feedback">
+                                Debe seleccionar una imagen.
+                            </div>
+                        </div>
                 </div>
                 <div class="row mt-4">
                     <div class="col-sm-12">
